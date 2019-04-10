@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.algonquincollege.cst8277</groupId>
+    <artifactId>assignment2</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Assignment 2</name>
+    <description>Assignment 2 - Multithreading and Concurrency</description>
+
+    <!-- why is everything a property? Because hard-coded values become part of
+        Maven's immutable Model object and then their contents can't be changed.
+        However, if the value is set in a user-defined property BEFORE the Model
+        object is created, then it is possible to do: mvn clean compile -Dfoo.bar.version=1.2.3
+        in order to (say for example) test out a newer version of some dependency
+        without having to change the pom.xml.
+    -->
+    
+    <properties>
+        <!-- maven properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.source.level>1.8</project.source.level>
+        <project.target.level>1.8</project.target.level>
+        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+        
+        <!-- code properties -->
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.3</logback.version>
+        <args4j.version>2.33</args4j.version>
+        <h2.version>1.4.197</h2.version>
+        <hibernate.version>5.4.1.Final</hibernate.version>
+        <podam.version>7.2.2.RELEASE</podam.version>
+        <apache.commons.csv.version>1.6</apache.commons.csv.version>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.co.jemos.podam</groupId>
+            <artifactId>podam</artifactId>
+            <version>${podam.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+       <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-hikaricp</artifactId>
+         <version>${hibernate.version}</version>
+       </dependency>
+        <dependency>
+            <groupId>args4j</groupId>
+            <artifactId>args4j</artifactId>
+            <version>${args4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>${apache.commons.csv.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${project.source.level}</source>
+                    <target>${project.target.level}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>
